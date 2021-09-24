@@ -1,6 +1,7 @@
 # Repository Labels
 
-A simple program to manage labels in our GitHub issue repositories
+A simple program to manage labels in our GitHub issue repositories.
 
-# Quick Start
+## License
 
+Licensed under [MIT](https://choosealicense.com/licenses/mit/).
