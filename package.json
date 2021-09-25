@@ -1,0 +1,28 @@
+{
+  "name": "repository-labels",
+  "version": "1.0.0",
+  "description": "Utility to synchronise issue labels across github repositories",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elifesciences/repository-labels.git"
+  },
+  "author": "NuclearRedeye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elifesciences/repository-labels/issues"
+  },
+  "homepage": "https://github.com/elifesciences/repository-labels#readme",
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "rollup": "^2.57.0",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "octokit": "^1.6.0"
+  }
+}
