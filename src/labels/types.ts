@@ -60,5 +60,11 @@ export const types: Label[] = [
     description: 'A blackhole for organising issues around a specific project or goal',
     color: 'BFBFA3',
     alias: ['']
+  },
+  {
+    name: 'debt',
+    description: 'Additional work resulting from a less than ideal solution',
+    color: '85bb65',
+    alias: ['']
   }
 ];
