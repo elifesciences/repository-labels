@@ -1,14 +1,10 @@
+# Files that when changed should trigger a rebuild.
+TS := $(shell find ./src -type f -name *.ts)
 
 # Targets that don't result in output of the same name.
 .PHONY: clean \
         distclean \
-        lint \
-        format \
-        test \
-        docs \
-        debug \
-        release \
-        version
+        test
 
 # When no target is specified, the default target to run.
 .DEFAULT_GOAL := out/release/index.js
@@ -21,18 +17,23 @@ distclean: clean
 clean:
 	@rm -rf out
 
-node_modules:
+# Target to install Node.js dependencies.
+node_modules: package.json package-lock.json
+	@echo "Installing dependencies..."
 	@npm install
 	@touch node_modules
 
-out/debug:
-	@mkdir -p ${CURDIR}/out/debug
+# Target to create the output directories.
+out/debug out/release:
+	@echo "Creating $@..."
+	@mkdir -p $(CURDIR)/$@
 
-out/debug/index.js: node_modules out/debug
+# Target that builds a development version of the utility
+out/debug/index.js: node_modules out/debug $(TS)
+	@echo "Creating $@..."
 	@npx tsc
 
-out/release:
-	@mkdir -p ${CURDIR}/out/release
-
+# Target that builds a release version of the utility
 out/release/index.js: ./out/debug/index.js out/release
-	@npx rollup ${CURDIR}/out/debug/index.js --file $@
+	@echo "Creating $@..."
+	@npx rollup $(CURDIR)/out/debug/index.js --file $@
