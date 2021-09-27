@@ -1,15 +1,20 @@
+PROJECT := $(notdir $(CURDIR))
+PORT ?= 8080
+
 # Files that when changed should trigger a rebuild.
 TS := $(shell find ./src -type f -name *.ts)
+HTML := $(shell find ./public -type f)
 
 # Targets that don't result in output of the same name.
 .PHONY: clean \
         distclean \
         format \
         lint \
-        test
+        test \
+				start
 
 # When no target is specified, the default target to run.
-.DEFAULT_GOAL := out/release/index.js
+.DEFAULT_GOAL := start
 
 # Target that cleans build output and local dependencies.
 distclean: clean
@@ -36,7 +41,7 @@ node_modules: package.json package-lock.json
 	@touch node_modules
 
 # Target to create the output directories.
-out/debug out/release:
+out/debug out/release out/preview:
 	@echo "Creating $@..."
 	@mkdir -p $(CURDIR)/$@
 
@@ -49,3 +54,13 @@ out/debug/index.js: node_modules out/debug $(TS)
 out/release/index.js: ./out/debug/index.js out/release
 	@echo "Creating $@..."
 	@npx rollup $(CURDIR)/out/debug/index.js --file $@
+
+# Target that bundles the html and code for the label preview page
+out/preview/index.html: out/preview out/debug/index.js $(HTML)
+	@echo "Creating $@..."
+	@cp -f public/* out/debug/labels/*.js out/preview/
+
+# Target that builds and serves the preview pages.
+start: out/preview/index.html out/release/index.js
+	@echo "Starting '$(PROJECT)' on 'http://localhost:$(PORT)'..."
+	@docker run --rm --name $(PROJECT) -p $(PORT):80 -e NGINX_ENTRYPOINT_QUIET_LOGS=1 -v $(CURDIR)/out/preview:/usr/share/nginx/html/:ro nginx:alpine

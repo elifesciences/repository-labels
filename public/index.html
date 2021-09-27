@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>GitHub Guidelines</title>
+    <style type="text/css">
+      body {
+        display: flex;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+        box-sizing: border-box;
+        text-size-adjust: 100%;
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      summary {
+        font-size: 12px;
+        color: '#586069';
+        font-weight: 600;
+        padding: 4px 0;
+        margin: -4px 0 4px;
+      }
+
+      .labels {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .label {
+        display: inline-block;
+        padding: 0 7px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        border: 1px solid transparent;
+        border-radius: 2em;
+        max-width: 100%;
+        margin-right: 4px;
+        margin-bottom: 4px;
+      }
+      </style>
+      <script type='module'>
+        import {types} from './types.js';
+        import {states} from './states.js';
+        import {skills} from './skills.js';
+        import {stakeholders} from './stakeholders.js';
+        import {goals} from './goals.js';
+        
+        function generateHTML(title, labels) {
+          const element = document.createElement('div');
+          let html = `<hr><summary>${title}</summary>`;
+          for (const label of labels) {
+            html += `<a class='label' style='color:white;background-color:#${label.color};'>
+                      <span>${label.name}</span>
+                    </a>`
+          }
+          element.innerHTML = html;
+          return element;
+        }
+
+        window.onload = () => {
+          const container = document.getElementById('container');
+          container.appendChild(generateHTML('Types', types));
+          container.appendChild(generateHTML('States', states));
+          container.appendChild(generateHTML('Skills', skills));
+          container.appendChild(generateHTML('Stakeholders', stakeholders));
+          container.appendChild(generateHTML('Goals', goals));
+        }
+      </script>
+  </head>
+  <body>
+    <div id='container' class='container'>
+      <h1>Default Labels</h1>
+    </div>
+  </body>
+</html>
