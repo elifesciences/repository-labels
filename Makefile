@@ -17,6 +17,10 @@ distclean: clean
 clean:
 	@rm -rf out
 
+# Target that checks the code for style/formating issues.
+format:
+	@npx prettier --check .
+
 # Target to install Node.js dependencies.
 node_modules: package.json package-lock.json
 	@echo "Installing dependencies..."
