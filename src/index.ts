@@ -21,7 +21,7 @@ if (org === '' || repo === '' || token === '') {
   process.exit(1);
 }
 
-let octokit = new Octokit({ auth: token });
+const octokit = new Octokit({ auth: token });
 
 console.info(`Retrieving labels for '${org}/${repo}'`);
 
@@ -34,7 +34,7 @@ for (const label of labels) {
   let found = false;
 
   // Compare against the current labels in the repository.
-  for (let currentLabel of currentLabels) {
+  for (const currentLabel of currentLabels) {
     // First, check to see if a label with the same name exists...
     if (compareLabelByName(currentLabel.name, label)) {
       // Is it an exact match? If so then no-op, else update...

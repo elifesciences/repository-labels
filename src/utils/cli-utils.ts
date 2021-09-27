@@ -1,12 +1,12 @@
 import { ProcessEnv } from '../interfaces/process';
 
 // Gets the specified configuration value in the order command line args > environment vars > default
-function getConfigItem(args: string[], env: ProcessEnv, keys: string[], initial: string = ''): string {
+function getConfigItem(args: string[], env: ProcessEnv, keys: string[], initial = ''): string {
   // Initialise to the default value
   let value = initial;
 
   // Retrieve if present, and overrite the value from the environment.
-  for (let key of keys) {
+  for (const key of keys) {
     if (env[key]) {
       value = env[key] as string;
     }
