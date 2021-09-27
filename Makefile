@@ -4,6 +4,8 @@ TS := $(shell find ./src -type f -name *.ts)
 # Targets that don't result in output of the same name.
 .PHONY: clean \
         distclean \
+        format \
+        lint \
         test
 
 # When no target is specified, the default target to run.
@@ -19,10 +21,12 @@ clean:
 
 # Target that checks the code for style/formating issues.
 format:
+	@echo "Running style checks..."
 	@npx prettier --check .
 
 # Target to run static analysis checks against the code.
 lint:
+	@echo "Running linter..."
 	@npx eslint . --ext .js,.ts
 
 # Target to install Node.js dependencies.
