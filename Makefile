@@ -21,6 +21,10 @@ clean:
 format:
 	@npx prettier --check .
 
+# Target to run static analysis checks against the code.
+lint:
+	@npx eslint . --ext .js,.ts
+
 # Target to install Node.js dependencies.
 node_modules: package.json package-lock.json
 	@echo "Installing dependencies..."
