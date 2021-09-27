@@ -86,6 +86,5 @@ export const skills: Label[] = [
     description: 'Solution requires expertise in Drupal',
     color,
     alias: []
-  },
+  }
 ];
-

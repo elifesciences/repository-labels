@@ -38,5 +38,5 @@ export const goals: Label[] = [
     description: 'Demonstrate financially sustainable core publishing operations',
     color,
     alias: []
-  },
+  }
 ];

@@ -44,5 +44,5 @@ export const stakeholders: Label[] = [
     description: 'Requested or required by the Product team',
     color,
     alias: []
-  },
+  }
 ];

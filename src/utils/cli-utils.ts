@@ -1,5 +1,3 @@
-
-
 import { ProcessEnv } from '../interfaces/process';
 
 // Gets the specified configuration value in the order command line args > environment vars > default
@@ -9,7 +7,7 @@ function getConfigItem(args: string[], env: ProcessEnv, keys: string[], initial:
 
   // Retrieve if present, and overrite the value from the environment.
   for (let key of keys) {
-    if (env[key] ) {
+    if (env[key]) {
       value = env[key] as string;
     }
   }
@@ -17,10 +15,10 @@ function getConfigItem(args: string[], env: ProcessEnv, keys: string[], initial:
   // Retrive if present, and overite with the value supplied on the cli.
   for (let i = 0; i < args.length; i++) {
     if (keys.includes(args[i])) {
-        if (++i < args.length) {
-            value = args[i];
-            break;
-        }
+      if (++i < args.length) {
+        value = args[i];
+        break;
+      }
     }
   }
   return value;

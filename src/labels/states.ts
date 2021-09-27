@@ -48,5 +48,5 @@ export const states: Label[] = [
     description: 'Work pulled into the current sprint from the backlog',
     color: '1d76db',
     alias: []
-  },
+  }
 ];
