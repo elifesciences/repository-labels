@@ -20,6 +20,12 @@ export const states: Label[] = [
     alias: []
   },
   {
+    name: 'refinement',
+    description: 'Requires further definition before being ready to work',
+    color: 'd876e3',
+    alias: []
+  },
+  {
     name: 'question',
     description: 'Further information is requested or required',
     color: 'd876e3',
