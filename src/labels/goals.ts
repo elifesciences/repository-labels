@@ -38,5 +38,11 @@ export const goals: Label[] = [
     description: 'Demonstrate financially sustainable core publishing operations',
     color,
     alias: []
+  },
+  {
+    name: 'era',
+    description: 'Publish 10 or more executable research articles throughout the year',
+    color,
+    alias: ['rds']
   }
 ];
