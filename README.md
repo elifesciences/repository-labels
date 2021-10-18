@@ -7,7 +7,6 @@ A simple program to create a consistent set of issues labels in 1 or more GitHub
 * You have a Linux or OSX machine. Windows should be supported via WSL 2 but has not been tested.
 * You have installed a recent version of [GNU Make](https://www.gnu.org/software/make/).
 * You have installed a recent version of [Node.js](https://nodejs.org/).
-* You have installed a recent version of [Docker](https://www.docker.com/).
 
 ## Quick Start
 
